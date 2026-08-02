@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <!-- ============================================================
+Site adaptado para I.P. Clean Higienização e Impermeabilização (Magé/RJ).
+Adaptado a partir do template de advocacia. Ver relatório de troca no
+final da conversa para lista completa de alterações e placeholders.
+============================================================ -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Higienização e impermeabilização de estofados em Magé | I.P. Clean</title>
+  <meta name="description"
+    content="Higienização e impermeabilização de sofás, colchões, estofados automotivos e carpetes em Magé, RJ. Peça seu orçamento pelo WhatsApp.">
+  <meta property="og:title" content="I.P. Clean Higienização e Impermeabilização | Magé, RJ">
+  <meta property="og:description"
+    content="Higienização e impermeabilização de estofados, colchões, carros e carpetes em Magé. Fale pelo WhatsApp.">
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta name="theme-color" content="#1E3A5F">
+  <!-- Fallback sem JS: marca o html como "js" o quanto antes; o estado escondido da animação só vale sob html.js -->
+  <script>document.documentElement.className += " js";</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --cor-marca: #1E3A5F;
+      /* TROCAR: cor da marca (uma variável só) */
+      --cor-marca-clara: #35608F;
+      /* tom mais claro da mesma cor, para gradientes */
+      --cor-marca-escura: #16293F;
+      /* tom mais escuro, para hover e rodapé */
+      --texto: #1a1a1a;
+      --texto-suave: #475569;
+      /* contraste 7:1 sobre branco */
+      --texto-sobre-marca: #ffffff;
+      --texto-suave-sobre-marca: #C9D4E2;
+      /* contraste 7.7:1 sobre a cor de marca */
+      --fundo: #ffffff;
+      --fundo-alt: #F4F6F9;
+      --borda: #DDE3EB;
+      --whatsapp: #128C7E;
+      --raio: 8px;
+      --largura-max: 1120px;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html {
+        scroll-behavior: auto;
+      }
+    }
+
+    body {
+      font-family: 'Ubuntu', system-ui, -apple-system, sans-serif;
+      font-size: 1.0625rem;
+      line-height: 1.6;
+      color: var(--texto);
+      background: var(--fundo);
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .container {
+      max-width: var(--largura-max);
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 80px 0;
+      scroll-margin-top: 80px;
+    }
+
+    @media (max-width: 720px) {
+      section {
+        padding: 48px 0;
+      }
+    }
+
+    h1,
+    h2,
+    h3 {
+      line-height: 1.2;
+      color: var(--texto);
+    }
+
+    h1 {
+      font-size: clamp(2rem, 5vw, 3.5rem);
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    h2 {
+      font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+      font-weight: 700;
+      letter-spacing: -0.01em;
+    }
+
+    h3 {
+      font-size: 1.1875rem;
+      font-weight: 500;
+    }
+
+    p {
+      color: var(--texto-suave);
+    }
+
+    a:focus-visible,
+    button:focus-visible {
+      outline: 3px solid var(--cor-marca);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    .fundo-marca a:focus-visible,
+    footer a:focus-visible,
+    .btn-flutuante:focus-visible {
+      outline-color: #ffffff;
+    }
+
+    .pular-conteudo {
+      position: absolute;
+      left: -9999px;
+      top: 0;
+      background: var(--cor-marca);
+      color: #fff;
+      padding: 12px 20px;
+      z-index: 200;
+      text-decoration: none;
+      font-weight: 500;
+    }
+
+    .pular-conteudo:focus {
+      left: 0;
+    }
+
+    /* ============================================================
+     ANIMAÇÃO DE ENTRADA
+     - Anima SÓ transform e opacity (roda a 60fps, sem layout shift).
+     - Estado escondido só existe sob html.js: sem JS, nada fica invisível.
+     - Blocos abaixo do hero recebem a classe "visivel" via IntersectionObserver.
+     - Hero anima no load (classe "carregado" no body via JS).
+     - Stagger por --i (índice do item na seção), 80ms entre itens.
+     ============================================================ */
+    html.js .anima {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity .6s cubic-bezier(0.16, 1, 0.3, 1), transform .6s cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: calc(var(--i, 0) * 80ms);
+      will-change: opacity, transform;
+    }
+
+    html.js .anima.visivel {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Hero: parte de um estado já pintado e legível; anima no load, não segura o LCP */
+    html.js .hero .anima {
+      opacity: 0;
+      transform: translateY(16px);
+      transition: opacity .55s cubic-bezier(0.16, 1, 0.3, 1), transform .55s cubic-bezier(0.16, 1, 0.3, 1);
+      transition-delay: calc(var(--i, 0) * 90ms);
+    }
+
+    html.js body.carregado .hero .anima {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Desliga TODA animação para quem pediu menos movimento: tudo estático e visível */
+    @media (prefers-reduced-motion: reduce) {
+
+      html.js .anima,
+      html.js .hero .anima,
+      html.js body.carregado .hero .anima {
+        opacity: 1 !important;
+        transform: none !important;
+        transition: none !important;
+      }
+    }
+
+    /* ===== Topo ===== */
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--fundo);
+      border-bottom: 1px solid var(--borda);
+    }
+
+    .topo-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      min-height: 68px;
+    }
+
+    .logo {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      min-height: 44px;
+      text-decoration: none;
+      color: var(--cor-marca);
+      font-weight: 700;
+      font-size: 1.125rem;
+      letter-spacing: -0.01em;
+    }
+
+    .logo svg {
+      flex-shrink: 0;
+    }
+
+    .logo span small {
+      display: block;
+      font-size: 0.75rem;
+      font-weight: 400;
+      color: var(--texto-suave);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      min-height: 48px;
+      padding: 12px 24px;
+      border-radius: var(--raio);
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 500;
+      text-decoration: none;
+      cursor: pointer;
+      border: 2px solid transparent;
+      transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.18);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .btn:hover {
+        transform: none;
+        box-shadow: none;
+      }
+    }
+
+    .btn-primario {
+      background: var(--cor-marca);
+      color: var(--texto-sobre-marca);
+    }
+
+    .btn-primario:hover {
+      background: var(--cor-marca-escura);
+    }
+
+    .btn-secundario {
+      background: transparent;
+      color: var(--cor-marca);
+      border-color: var(--cor-marca);
+    }
+
+    .btn-secundario:hover {
+      background: var(--fundo-alt);
+    }
+
+    .btn svg {
+      flex-shrink: 0;
+    }
+
+    @media (max-width: 480px) {
+      .topo-inner .btn {
+        padding: 12px 16px;
+        font-size: 0.9375rem;
+      }
+
+      .logo span small {
+        display: none;
+      }
+    }
+
+    /* ===== Hero ===== */
+    .hero {
+      padding: 96px 0;
+    }
+
+    @media (max-width: 720px) {
+      .hero {
+        padding: 56px 0;
+      }
+    }
+
+    .hero-inner {
+      max-width: 780px;
+    }
+
+    .selo {
+      display: inline-block;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cor-marca);
+      border: 1px solid var(--borda);
+      border-radius: 999px;
+      padding: 6px 14px;
+      margin-bottom: 24px;
+    }
+
+    .hero p.apoio {
+      font-size: 1.1875rem;
+      margin: 24px 0 40px;
+      max-width: 620px;
+    }
+
+    .hero-ctas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+    }
+
+    .hero-nota {
+      margin-top: 28px;
+      font-size: 0.9375rem;
+      color: var(--texto-suave);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .hero-nota svg {
+      color: var(--cor-marca);
+      flex-shrink: 0;
+    }
+
+    /* ===== Seções ===== */
+    .secao-cabeca {
+      max-width: 640px;
+      margin-bottom: 48px;
+    }
+
+    .secao-cabeca .rotulo {
+      display: block;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--cor-marca);
+      margin-bottom: 12px;
+    }
+
+    .secao-cabeca p {
+      margin-top: 16px;
+    }
+
+    .fundo-alt {
+      background: var(--fundo-alt);
+    }
+
+    /* ===== Áreas de atuação ===== */
+    .grade-areas {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 24px;
+    }
+
+    .card {
+      background: var(--fundo);
+      border: 1px solid var(--borda);
+      border-radius: var(--raio);
+      padding: 32px 28px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .card:hover {
+        transform: none;
+        box-shadow: none;
+      }
+    }
+
+    .card .icone {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 48px;
+      height: 48px;
+      border-radius: var(--raio);
+      background: var(--fundo-alt);
+      color: var(--cor-marca);
+      margin-bottom: 20px;
+    }
+
+    .fundo-alt .card .icone {
+      background: #E8EDF4;
+    }
+
+    .card h3 {
+      margin-bottom: 8px;
+    }
+
+    .card p {
+      font-size: 0.9375rem;
+    }
+
+    /* ===== Como funciona ===== */
+    .grade-passos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 32px;
+    }
+
+    .passo {
+      position: relative;
+    }
+
+    .passo .numero {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background: var(--cor-marca);
+      color: var(--texto-sobre-marca);
+      font-weight: 700;
+      font-size: 1.125rem;
+      margin-bottom: 20px;
+    }
+
+    .passo h3 {
+      margin-bottom: 8px;
+    }
+
+    .passo p {
+      font-size: 0.9375rem;
+    }
+
+    .passos-cta {
+      margin-top: 48px;
+    }
+
+    /* ===== Depoimentos ===== */
+    .grade-depoimentos {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    .depoimento {
+      background: var(--fundo);
+      border: 1px solid var(--borda);
+      border-radius: var(--raio);
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .depoimento:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .depoimento:hover {
+        transform: none;
+        box-shadow: none;
+      }
+    }
+
+    .depoimento .aspas {
+      color: var(--cor-marca);
+      font-size: 2.5rem;
+      font-weight: 700;
+      line-height: 1;
+    }
+
+    .depoimento .estrelas {
+      color: #F5A623;
+      font-size: 0.9375rem;
+      letter-spacing: 2px;
+      line-height: 1;
+    }
+
+    .depoimento blockquote p {
+      font-style: italic;
+      font-size: 0.9375rem;
+    }
+
+    .depoimento footer {
+      font-size: 0.875rem;
+      font-weight: 500;
+      color: var(--texto);
+      border: 0;
+      background: none;
+    }
+
+    /* ===== Sobre ===== */
+    .sobre-grade {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 56px;
+      align-items: center;
+    }
+
+    @media (max-width: 860px) {
+      .sobre-grade {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+    }
+
+    .sobre-texto p {
+      margin-bottom: 16px;
+    }
+
+    .sobre-texto p:last-child {
+      margin-bottom: 0;
+    }
+
+    .foto-reservada {
+      aspect-ratio: 4 / 3;
+      border-radius: var(--raio);
+      background: linear-gradient(135deg, var(--cor-marca) 0%, var(--cor-marca-clara) 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 24px;
+    }
+
+    .foto-reservada span {
+      color: #ffffff;
+      font-weight: 500;
+      font-size: 0.9375rem;
+      text-align: center;
+      border: 2px dashed rgba(255, 255, 255, 0.6);
+      border-radius: var(--raio);
+      padding: 20px 24px;
+      max-width: 320px;
+    }
+
+    /* ===== Localização ===== */
+    .fundo-marca {
+      background: var(--cor-marca);
+    }
+
+    .fundo-marca h2 {
+      color: var(--texto-sobre-marca);
+    }
+
+    .fundo-marca p {
+      color: var(--texto-suave-sobre-marca);
+    }
+
+    .fundo-marca .rotulo {
+      color: var(--texto-suave-sobre-marca);
+    }
+
+    .local-grade {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+      align-items: start;
+    }
+
+    @media (max-width: 860px) {
+      .local-grade {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    .local-item {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+
+    .local-item svg {
+      color: var(--texto-suave-sobre-marca);
+      flex-shrink: 0;
+      margin-top: 4px;
+    }
+
+    .local-item strong {
+      display: block;
+      color: var(--texto-sobre-marca);
+      font-weight: 500;
+      margin-bottom: 2px;
+    }
+
+    .local-item p {
+      font-size: 0.9375rem;
+    }
+
+    .link-maps {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 44px;
+      color: var(--texto-sobre-marca);
+      font-weight: 500;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+    }
+
+    .local-cta {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(255, 255, 255, 0.18);
+      border-radius: var(--raio);
+      padding: 32px 28px;
+    }
+
+    .local-cta h3 {
+      color: var(--texto-sobre-marca);
+      margin-bottom: 8px;
+    }
+
+    .local-cta p {
+      margin-bottom: 24px;
+      font-size: 0.9375rem;
+    }
+
+    .btn-claro {
+      background: #ffffff;
+      color: var(--cor-marca);
+    }
+
+    .btn-claro:hover {
+      background: var(--fundo-alt);
+    }
+
+    /* ===== Rodapé ===== */
+    .rodape {
+      background: var(--cor-marca-escura);
+      padding: 64px 0 32px;
+    }
+
+    .rodape-grade {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 48px;
+    }
+
+    @media (max-width: 720px) {
+      .rodape-grade {
+        grid-template-columns: 1fr;
+        gap: 32px;
+      }
+    }
+
+    .rodape .marca {
+      color: #ffffff;
+      font-weight: 700;
+      font-size: 1.125rem;
+      margin-bottom: 8px;
+    }
+
+    .rodape p {
+      color: var(--texto-suave-sobre-marca);
+      font-size: 0.9375rem;
+    }
+
+    .rodape h3 {
+      color: #ffffff;
+      font-size: 0.8125rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 16px;
+    }
+
+    .rodape ul {
+      list-style: none;
+    }
+
+    .rodape ul a,
+    .rodape ul .texto-contato {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      color: var(--texto-suave-sobre-marca);
+      text-decoration: none;
+      font-size: 0.9375rem;
+    }
+
+    .rodape ul a:hover {
+      color: #ffffff;
+      text-decoration: underline;
+    }
+
+    .rodape-legal {
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      padding-top: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .rodape-legal p {
+      font-size: 0.8125rem;
+    }
+
+    .developer-credit {
+      margin-top: 2rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.15);
+      text-align: center;
+    }
+
+    .developer-credit a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 0.95rem;
+      transition: color 0.3s ease;
+    }
+
+    .developer-credit a strong {
+      color: inherit;
+      font-weight: 700;
+    }
+
+    .developer-credit a:hover {
+      color: var(--cor-marca);
+    }
+
+    /* ===== Botão flutuante de WhatsApp ===== */
+    .btn-flutuante {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      z-index: 150;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: var(--whatsapp);
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+      transition: background-color 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-flutuante:hover {
+      background: #0E6F64;
+      transform: translateY(-2px);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.3);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .btn-flutuante:hover {
+        transform: none;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <a class="pular-conteudo" href="#conteudo">Pular para o conteúdo</a>
+
+  <header>
+    <div class="container topo-inner">
+      <a class="logo" href="/">
+        <img
+          src="assets/img/logo-ipclean.png"
+          alt="I.P.Clean Higienização e Impermeabilização"
+          width="80"
+          height="80">
+      </a>
+      <a class="btn btn-primario"
+        href="https://wa.me/5521967697217?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20I.P.%20Clean%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20higieniza%C3%A7%C3%A3o%20e%20impermeabiliza%C3%A7%C3%A3o.">
+        Falar no WhatsApp
+      </a>
+    </div>
+  </header>
+
+  <main id="conteudo">
+
+    <!-- ===== Hero ===== -->
+    <section class="hero" aria-labelledby="titulo-hero">
+      <div class="container hero-inner">
+        <span class="selo anima" style="--i:0">Santo Aleixo, Magé</span>
+        <h1 id="titulo-hero" class="anima" style="--i:1">Sofás, colchões e estofados como novos, com higienização e
+          impermeabilização profissional.</h1>
+        <p class="apoio anima" style="--i:2">Conte pelo WhatsApp o que precisa higienizar. A equipe da I.P. Clean avalia
+          o caso e explica o serviço e o prazo, sem compromisso.</p>
+        <div class="hero-ctas anima" style="--i:3">
+          <a class="btn btn-primario"
+            href="https://wa.me/5521967697217?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20I.P.%20Clean%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20higieniza%C3%A7%C3%A3o%20e%20impermeabiliza%C3%A7%C3%A3o.">
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+              stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+              <path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z" />
+            </svg>
+            Pedir orçamento no WhatsApp
+          </a>
+          <a class="btn btn-secundario" href="#areas">Ver serviços</a>
+        </div>
+        <p class="hero-nota anima" style="--i:4">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+            stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+            <path d="M20 6L9 17l-5-5" />
+          </svg>
+          Atendimento em todo o Grande Rio. Solicite seu orçamento gratuito.
+
+        </p>
+      </div>
+    </section>
+
+    <!-- ===== Áreas de atuação ===== -->
+    <section id="areas" class="fundo-alt" aria-labelledby="titulo-areas">
+      <div class="container">
+        <div class="secao-cabeca">
+          <span class="rotulo anima" style="--i:0">Serviços</span>
+          <h2 id="titulo-areas" class="anima" style="--i:1">O que a I.P. Clean faz por você</h2>
+          <p class="anima" style="--i:2">Higienização e impermeabilização de estofados, com equipamento profissional e
+            cuidado com cada peça.</p>
+        </div>
+        <div class="grade-areas">
+          <article class="card anima" style="--i:0">
+            <span class="icone">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M4 18v-5a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v5" />
+                <path d="M2 18h20v2a1 1 0 0 1-1 1H3a1 1 0 0 1-1-1z" />
+                <path d="M4 13V9a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v1" />
+                <path d="M14 10V9a2 2 0 0 1 2-2h2a2 2 0 0 1 2 2v4" />
+              </svg>
+            </span>
+            <h3>Sofás e estofados</h3>
+            <p>Remoção de manchas, odores e ácaros, com secagem rápida e cuidado com o tecido de cada peça.</p>
+          </article>
+          <article class="card anima" style="--i:1">
+            <span class="icone">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <rect x="3" y="8" width="18" height="10" rx="2" />
+                <path d="M7 8v4M12 8v4M17 8v4" />
+                <path d="M5 18v2M19 18v2" />
+              </svg>
+            </span>
+            <h3>Colchões</h3>
+            <p>Higienização profunda contra ácaros e fungos, para um sono mais limpo e saudável.</p>
+          </article>
+          <article class="card anima" style="--i:2">
+            <span class="icone">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M5 11l1.5-4.5A2 2 0 0 1 8.4 5h7.2a2 2 0 0 1 1.9 1.5L19 11" />
+                <rect x="3" y="11" width="18" height="6" rx="2" />
+                <circle cx="7.5" cy="17" r="1.5" />
+                <circle cx="16.5" cy="17" r="1.5" />
+              </svg>
+            </span>
+            <h3>Estofados automotivos</h3>
+            <p>Bancos, forros e carpetes do carro com aparência e cheiro de novo.</p>
+          </article>
+          <article class="card anima" style="--i:3">
+            <span class="icone">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M4 6a3 3 0 0 1 3-3h11" />
+                <circle cx="7" cy="6" r="3" />
+                <path d="M7 9v9a3 3 0 0 0 3 3h9" />
+              </svg>
+            </span>
+            <h3>Tapetes e carpetes</h3>
+            <p>Limpeza e impermeabilização que protegem contra manchas e prolongam a vida do tecido.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Como funciona ===== -->
+    <section id="como-funciona" aria-labelledby="titulo-como-funciona">
+      <div class="container">
+        <div class="secao-cabeca">
+          <span class="rotulo anima" style="--i:0">Como funciona</span>
+          <h2 id="titulo-como-funciona" class="anima" style="--i:1">Do primeiro contato ao estofado limpo</h2>
+          <p class="anima" style="--i:2">Um caminho simples, em três passos, para você saber exatamente o que esperar do
+            serviço.</p>
+        </div>
+        <div class="grade-passos">
+          <div class="passo anima" style="--i:0">
+            <span class="numero" aria-hidden="true">1</span>
+            <h3>Contato</h3>
+            <p>Você conta pelo WhatsApp o que precisa higienizar e recebe um orçamento sem compromisso.</p>
+          </div>
+          <div class="passo anima" style="--i:1">
+            <span class="numero" aria-hidden="true">2</span>
+            <h3>Avaliação</h3>
+            <p>A equipe confirma o serviço, o material da peça e o prazo antes de começar o trabalho.</p>
+          </div>
+          <div class="passo anima" style="--i:2">
+            <span class="numero" aria-hidden="true">3</span>
+            <h3>Higienização</h3>
+            <p>O serviço é realizado com equipamento profissional, com cuidado e atenção a cada detalhe.</p>
+          </div>
+        </div>
+        <div class="passos-cta anima" style="--i:3">
+          <a class="btn btn-primario"
+            href="https://wa.me/5521967697217?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20I.P.%20Clean%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20higieniza%C3%A7%C3%A3o%20e%20impermeabiliza%C3%A7%C3%A3o.">Peça
+            seu orçamento no WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Depoimentos ===== -->
+    <section id="depoimentos" class="fundo-alt" aria-labelledby="titulo-depoimentos">
+      <div class="container">
+        <div class="secao-cabeca">
+          <span class="rotulo anima" style="--i:0">Depoimentos</span>
+          <h2 id="titulo-depoimentos" class="anima" style="--i:1">O que dizem clientes atendidos</h2>
+        </div>
+        <div class="grade-depoimentos">
+          <article class="depoimento anima" style="--i:0">
+            <span class="estrelas" aria-label="5 de 5 estrelas">★★★★★</span>
+            <span class="aspas" aria-hidden="true">&ldquo;</span>
+            <blockquote>
+              <p>Os bancos do meu carro estavam cheios de manchas e com um cheiro que não saía por nada. A equipe da
+                I.P.Clean fez uma higienização automotiva completa e o resultado foi um verdadeiro milagre! Além de
+                super pontuais, deixaram o interior do veículo impecável, com cheiro de carro zero, e a
+                impermeabilização já me salvou de acidentes com o lanche das crianças. Recomendo de olhos fechados!</p>
+            </blockquote>
+            <footer>Mariana Costa</footer>
+          </article>
+          <article class="depoimento anima" style="--i:1">
+            <span class="estrelas" aria-label="5 de 5 estrelas">★★★★★</span>
+            <span class="aspas" aria-hidden="true">&ldquo;</span>
+            <blockquote>
+              <p>Serviço de primeira linha. Contratei a I.P. Clean para higienizar e impermeabilizar as cadeiras da sala
+                de jantar e o tapete, principalmente porque tenho cachorros em casa. O resultado superou muito minhas
+                expectativas. O atendimento foi rápido, os profissionais são educados, organizados e deixaram tudo limpo
+                antes de ir embora. Vale cada centavo.</p>
+            </blockquote>
+            <footer>Rafael Oliveira</footer>
+          </article>
+          <article class="depoimento anima" style="--i:2">
+            <span class="estrelas" aria-label="5 de 5 estrelas">★★★★★</span>
+            <span class="aspas" aria-hidden="true">&ldquo;</span>
+            <blockquote>
+              <p>Eu sofria bastante com rinite alérgica e resolvi chamá-los para fazer uma higienização profunda nos
+                colchões aqui de casa. Foi a melhor decisão! A quantidade de sujeira e ácaros que saiu me deixou
+                impressionada. O trabalho da I.P. Clean trouxe muito mais qualidade de vida e saúde para a nossa
+                família. Empresa extremamente profissional e transparente.</p>
+            </blockquote>
+            <footer>Fernanda Lima</footer>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Sobre ===== -->
+    <section id="sobre" aria-labelledby="titulo-sobre">
+      <div class="container sobre-grade">
+        <div class="sobre-texto">
+          <div class="secao-cabeca" style="margin-bottom: 24px;">
+            <span class="rotulo anima" style="--i:0">Sobre a I.P. Clean</span>
+            <h2 id="titulo-sobre" class="anima" style="--i:1">Cuidamos dos seus estofados com qualidade e profissionalismo</h2>
+          </div>
+          <p class="anima" style="--i:2">Há cerca de 7 meses, atuamos no segmento de higienização e impermeabilização de estofados, oferecendo um atendimento comprometido, transparente e focado na satisfação de cada cliente. Nossa equipe é formada por profissionais capacitados, preparados para realizar cada serviço com técnica, cuidado e atenção aos detalhes.</p>
+          <p class="anima" style="--i:3">Trabalhamos com produtos profissionais de alta qualidade, desenvolvidos para promover uma limpeza profunda sem agredir as fibras dos tecidos, preservando a aparência, a durabilidade e o conforto dos estofados. Cada atendimento é realizado seguindo boas práticas do setor, garantindo um serviço eficiente e seguro.</p>
+          <p class="anima" style="--i:4">Além da higienização, oferecemos o serviço de impermeabilização, que cria uma camada protetora sobre o tecido, ajudando a reduzir a absorção de líquidos, facilitando a limpeza do dia a dia e contribuindo para a conservação do estofado por mais tempo.</p>
+          <p class="anima" style="--i:5">Atendemos residências, empresas e veículos em todo o Grande Rio, sempre com pontualidade, profissionalismo e orçamento sem compromisso. Nossa missão é entregar um serviço de excelência, proporcionando ambientes mais limpos, saudáveis e bem cuidados.</p>
+        </div>
+        <div class="foto-reservada anima" style="--i:6" role="img"
+          aria-label="Espaço reservado para foto da equipe ou do serviço">
+          <span>[PLACEHOLDER: foto da equipe ou de um serviço sendo realizado, proporção 4x3]</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Localização e horário ===== -->
+    <section id="localizacao" class="fundo-marca" aria-labelledby="titulo-localizacao">
+      <div class="container">
+        <div class="secao-cabeca">
+          <span class="rotulo anima" style="--i:0">Localização e horário</span>
+          <h2 id="titulo-localizacao" class="anima" style="--i:1">Onde nos encontrar</h2>
+        </div>
+        <div class="local-grade">
+          <div class="anima" style="--i:0">
+            <div class="local-item">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <path d="M12 21s7-5.1 7-11a7 7 0 1 0-14 0c0 5.9 7 11 7 11z" />
+                <circle cx="12" cy="10" r="2.5" />
+              </svg>
+              <div>
+                <strong>Endereço</strong>
+                <p>R. Waldemar Lima Teixeira, 2543 - Jardim Santa Claudia, Magé - RJ, 25912-143</p>
+                <a class="link-maps"
+                  href="https://www.google.com/maps/search/?api=1&amp;query=R.+Waldemar+Lima+Teixeira%2C+2543+-+Jardim+Santa+Claudia%2C+Mag%C3%A9+-+RJ%2C+25912-143">Ver
+                  no Google Maps</a>
+              </div>
+            </div>
+            <div class="local-item">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+                stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+                <circle cx="12" cy="12" r="9" />
+                <path d="M12 7v5l3 2" />
+              </svg>
+              <div>
+                <strong>Horário de atendimento</strong>
+                <p>Segunda a sábado, das 8:00 às 17:00.</p>
+              </div>
+            </div>
+          </div>
+          <div class="local-cta anima" style="--i:1">
+            <h3>Prefere começar por uma mensagem?</h3>
+            <p>Escreva no WhatsApp contando o que precisa higienizar. A equipe responde no horário de atendimento.</p>
+            <a class="btn btn-claro"
+              href="https://wa.me/5521967697217?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20I.P.%20Clean%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20higieniza%C3%A7%C3%A3o%20e%20impermeabiliza%C3%A7%C3%A3o.">Pedir
+              orçamento</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ===== Rodapé ===== -->
+  <footer class="rodape">
+    <div class="container">
+      <div class="rodape-grade">
+        <div>
+          <p class="marca">I.P. Clean Higienização e Impermeabilização</p>
+          <p>Higienização e impermeabilização de estofados, colchões, carros e carpetes em todo o Grande Rio.</p>
+        </div>
+        <div>
+          <h3>Contato</h3>
+          <ul>
+            <li><a
+                href="https://wa.me/5521967697217?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20I.P.%20Clean%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20higieniza%C3%A7%C3%A3o%20e%20impermeabiliza%C3%A7%C3%A3o.">WhatsApp:
+                (21) 96769-7217</a></li>
+            <li><a
+                href="https://wa.me/5521988128078?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20I.P.%20Clean%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20higieniza%C3%A7%C3%A3o%20e%20impermeabiliza%C3%A7%C3%A3o.">WhatsApp:
+                (21) 98812-8078</a></li>
+          </ul>
+        </div>
+        <div>
+          <h3>Redes</h3>
+          <ul>
+            <li><a href="https://www.instagram.com/i.p.higienizacao">Instagram: @i.p.higienizacao</a></li>
+            <li><a
+                href="https://www.google.com/maps/search/?api=1&amp;query=R.+Waldemar+Lima+Teixeira%2C+2543+-+Jardim+Santa+Claudia%2C+Mag%C3%A9+-+RJ%2C+25912-143">Google
+                Maps</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="rodape-legal">
+        <p>I.P. Clean Higienização e Impermeabilização. CNPJ 62.203.490/0001-80.</p>
+        <p>Atendimento em todo o Grande Rio. Solicite seu orçamento gratuito.
+</p>
+        <div class="developer-credit">
+          <a
+            href="https://rafamenezessdev.github.io/portifolio/"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Portfólio de Rafael Menezes">
+            Criado e desenvolvido por <strong>Rafael Menezes</strong>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===== Botão flutuante de WhatsApp ===== -->
+  <a class="btn-flutuante"
+    href="https://wa.me/5521967697217?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20I.P.%20Clean%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20higieniza%C3%A7%C3%A3o%20e%20impermeabiliza%C3%A7%C3%A3o."
+    aria-label="Pedir orçamento no WhatsApp">
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"
+      stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false">
+      <path d="M21 11.5a8.5 8.5 0 0 1-12.4 7.5L3 21l2-5.6A8.5 8.5 0 1 1 21 11.5z" />
+      <path d="M8.5 9.5c0 4 2.5 6 5.5 6.5l1.5-1.5-2-1.5-1 .5c-1-.5-1.8-1.3-2.2-2.3l.7-1.2-1.5-2z" />
+    </svg>
+  </a>
+
+  <script>
+    // Animação de entrada, sem biblioteca. Só transform/opacity, zero layout shift.
+    (function () {
+      var reduz = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      // Hero anima no load (cascata rápida). Sem esperar scroll.
+      // requestAnimationFrame garante que o estado inicial já foi pintado antes de transitar.
+      requestAnimationFrame(function () {
+        requestAnimationFrame(function () {
+          document.body.classList.add('carregado');
+        });
+      });
+
+      // Se o usuário pediu menos movimento, mostra tudo estático e não observa nada.
+      if (reduz) {
+        var todos = document.querySelectorAll('.anima');
+        for (var i = 0; i < todos.length; i++) { todos[i].classList.add('visivel'); }
+        return;
+      }
+
+      // Blocos abaixo do hero: entram na viewport via IntersectionObserver.
+      var alvos = document.querySelectorAll('main section:not(.hero) .anima, .rodape .anima');
+      if (!('IntersectionObserver' in window)) {
+        for (var j = 0; j < alvos.length; j++) { alvos[j].classList.add('visivel'); }
+        return;
+      }
+      var obs = new IntersectionObserver(function (entradas, observador) {
+        entradas.forEach(function (e) {
+          if (e.isIntersecting) {
+            e.target.classList.add('visivel');
+            observador.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.15, rootMargin: '0px 0px -8% 0px' });
+      for (var k = 0; k < alvos.length; k++) { obs.observe(alvos[k]); }
+    })();
+  </script>
+
+</body>
+
+</html>
