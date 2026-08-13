@@ -232,6 +232,31 @@ final da conversa para lista completa de alterações e placeholders.
       text-transform: uppercase;
     }
 
+    .nome-topo {
+      font-size: clamp(1.05rem, 2.3vw, 1.4rem);
+      font-weight: 700;
+      letter-spacing: 0.02em;
+      color: var(--cor-marca);
+      text-decoration: none;
+      white-space: nowrap;
+      position: relative;
+      display: inline-flex;
+      align-items: center;
+      line-height: 1.2;
+    }
+
+    .nome-topo::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -6px;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cor-marca), rgba(30, 58, 95, 0.2));
+      border-radius: 999px;
+      opacity: 0.7;
+    }
+
     .btn {
       display: inline-flex;
       align-items: center;
@@ -544,22 +569,21 @@ final da conversa para lista completa de alterações e placeholders.
     .foto-reservada {
       aspect-ratio: 4 / 3;
       border-radius: var(--raio);
-      background: linear-gradient(135deg, var(--cor-marca) 0%, var(--cor-marca-clara) 100%);
+      background: transparent;
       display: flex;
       align-items: center;
       justify-content: center;
-      padding: 24px;
+      padding: 0;
+      overflow: visible;
     }
 
-    .foto-reservada span {
-      color: #ffffff;
-      font-weight: 500;
-      font-size: 0.9375rem;
-      text-align: center;
-      border: 2px dashed rgba(255, 255, 255, 0.6);
-      border-radius: var(--raio);
-      padding: 20px 24px;
-      max-width: 320px;
+    .foto-reservada img {
+      display: block;
+      width: min(100%, 520px);
+      height: auto;
+      object-fit: contain;
+      filter: none;
+      max-height: 100%;
     }
 
     /* ===== Localização ===== */
@@ -787,13 +811,7 @@ final da conversa para lista completa de alterações e placeholders.
 
   <header>
     <div class="container topo-inner">
-      <a class="logo" href="/">
-        <img
-          src="assets/img/logo-ipclean.png"
-          alt="I.P.Clean Higienização e Impermeabilização"
-          width="80"
-          height="80">
-      </a>
+      <a class="nome-topo" href="#conteudo" aria-label="I.P. Clean Higienização e Impermeabilização">I.P. Clean</a>
       <a class="btn btn-primario"
         href="https://wa.me/5521988128078?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20I.P.%20Clean%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20higieniza%C3%A7%C3%A3o%20e%20impermeabiliza%C3%A7%C3%A3o.">
         Falar no WhatsApp
@@ -990,8 +1008,9 @@ final da conversa para lista completa de alterações e placeholders.
           <p class="anima" style="--i:5">Atendemos residências, empresas e veículos em todo o Grande Rio, sempre com pontualidade, profissionalismo e orçamento sem compromisso. Nossa missão é entregar um serviço de excelência, proporcionando ambientes mais limpos, saudáveis e bem cuidados.</p>
         </div>
         <div class="foto-reservada anima" style="--i:6" role="img"
-          aria-label="Espaço reservado para foto da equipe ou do serviço">
-          <span>[PLACEHOLDER: foto da equipe ou de um serviço sendo realizado, proporção 4x3]</span>
+          aria-label="Logo da I.P. Clean Higienização e Impermeabilização">
+          <img src="assets/img/logo-ipclean.png"
+            alt="Logo da I.P. Clean Higienização e Impermeabilização">
         </div>
       </div>
     </section>
@@ -1056,8 +1075,11 @@ final da conversa para lista completa de alterações e placeholders.
           <h3>Contato</h3>
           <ul>
             <li><a
-                href="https://wa.me/5521988128078?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20I.P.%20Clean%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20higieniza%C3%A7%C3%A3o%20e%20impermeabiliza%C3%A7%C3%A3o.">WhatsApp:
-                (21) 98812-8078</a></li>
+                href="https://wa.me/5521988128078?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20I.P.%20Clean%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20higieniza%C3%A7%C3%A3o%20e%20impermeabiliza%C3%A7%C3%A3o.">WhatsApp
+                : (21) 98812-8078</a></li>
+            <li><a
+                href="https://wa.me/5521967697217?text=Ol%C3%A1%2C%20vim%20pelo%20site%20da%20I.P.%20Clean%20e%20gostaria%20de%20solicitar%20um%20or%C3%A7amento%20de%20higieniza%C3%A7%C3%A3o%20e%20impermeabiliza%C3%A7%C3%A3o.">WhatsApp
+                : (21) 96769-7217</a></li>
           </ul>
         </div>
         <div>
